@@ -11,7 +11,32 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return response()->json($items);
+        return $items;
+    }
+
+    public function indexHTML()
+    {
+        $items = Item::all();
+        return view('index', ["items" => $items]);
+    }
+
+    public function listLime()
+    {
+        $items = Item::where('name', 'lime')->get();
+        return view('index', ["items" => $items]);
+    }
+
+    public function listNotLime()
+    {
+        $items = Item::where('name', '!=', 'lime')->get();
+        return view('index', ["items" => $items]);
+    }
+
+    public function listCompare()
+    {
+        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
+        $items2 = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
+        return view('index', ["items" => $items, "items2" => $items2]);
     }
     
     public function kind()

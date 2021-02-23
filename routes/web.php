@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,13 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [ItemController::class, 'indexHTML']);
+Route::get('/lime', [ItemController::class, 'listLime']);
+Route::get('/~lime', [ItemController::class, 'listNotLime']);
+Route::get('/compare', [ItemController::class, 'listCompare']);
 
 Route::group([
 

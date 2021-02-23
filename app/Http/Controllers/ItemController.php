@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use App\Models\Item;
 
 class ItemController extends Controller
@@ -54,5 +55,29 @@ class ItemController extends Controller
     {
         $input = $request->all();
         $item = Item::create($input);
+    }
+
+    public function find(Request $request)
+    {
+        DB::enableQueryLog();
+        $item = DB::table('items');
+
+        if ($request->input('name')) {
+            $item->where('name', $request->input('name'));
+        }
+
+        if ($request->input('qty')) {
+            $item->where('qty', $request->input('qty'));
+        }
+
+        if ($request->input('created_at.lt') && $request->input('created_at.gt')) {
+            $item->whereBetween('created_at', [$request->input('created_at.gt'), $request->input('created_at.lt')]);
+        } else if ($request->input('created_at.lt')) {
+            $item->where('created_at', '<', $request->input('created_at'));
+        } else if ($request->input('created_at.gt')) {
+            $item->where('created_at', '>', $request->input('created_at'));
+        }
+
+        return $item->get();
     }
 }

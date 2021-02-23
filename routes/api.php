@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{name}', [UserController::class, 'byName']);
+
+
+Route::get('/kind', [ItemController::class, 'kind']);
+Route::get('/items', [ItemController::class, 'index']);
+Route::post('/items', [ItemController::class, 'push']);
+Route::get('/items/{name}', [ItemController::class, 'byName']);

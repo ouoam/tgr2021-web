@@ -12,7 +12,7 @@
         <div class="container">
             <div id="app">
                 <div class="row">
-                    <find-form init_qty='{{Request::input("qty")}}' init_name='{{Request::input("name")}}' :kinds='@json($kinds, JSON_HEX_QUOT)'/>
+                    <find-form init_qty='{{Request::input("qty")}}' init_name='{{Request::input("name")}}' init_date_gt='{{Request::input("created_at.gt")}}' init_date_lt='{{Request::input("created_at.lt")}}' :kinds='@json($kinds, JSON_HEX_QUOT)'/>
                 </div>
 
                 <div class="row">

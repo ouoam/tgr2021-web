@@ -80,4 +80,11 @@ class ItemController extends Controller
 
         return $item->get();
     }
+
+    public function findHTML(Request $request)
+    {
+        $items = $this->find($request);
+        $kinds = Arr::pluck(Item::groupBy('name')->get('name'), 'name');
+        return view('find', ["items" => $items, "kinds" => $kinds]);
+    }
 }

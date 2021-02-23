@@ -9,86 +9,16 @@
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
     </head>
     <body>
-    <div class="container">
-        <div id="app">
-        <div class="row">
-            <table class="table col-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">name</th>
-                        <th scope="col">qty</th>
-                        
-                        @if ($items[0]->created_at)
-                        <th scope="col">create</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-@php
-    $count = 0;
-@endphp
-@forelse ($items as $item)
-@php
-    $count += $item->qty;
-@endphp
-                            <tr>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->qty}}</td>
-                                @if ($item->created_at)
-                                <td>{{$item->created_at}}</td>
-                                @endif
-                            </tr>
-                @empty
-                    <p>No users</p>
-                @endforelse
-
-                <tr class="bg-info">
-                <td><b>Sum</b></td>
-                <td><b>{{$count}}</b></td>
-                <td></td>
-                </tr>
-                </tbody>
-            </table>
-            @if (isset($items2))
-            <table class="table col-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">name</th>
-                        <th scope="col">qty</th>
-                        @if ($items2[0]->created_at)
-                        <th scope="col">create</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-@php
-    $count = 0;
-@endphp
-@forelse ($items2 as $item)
-@php
-    $count += $item->qty;
-@endphp
-                            <tr>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->qty}}</td>
-                                @if ($item->created_at)
-                                <td>{{$item->created_at}}</td>
-                                @endif
-                            </tr>
-                @empty
-                    <p>No users</p>
-                @endforelse
-                <tr class="bg-info">
-                <td><b>Sum</b></td>
-                <td><b>{{$count}}</b></td>
-                <td></td>
-                </tr>
-                </tbody>
-            </table>
-            @endif
+        <div class="container">
+            <div id="app">
+                <div class="row">
+                    @include('table', ['items' => $items])
+                    @if (isset($items2))
+                    @includeWhen(isset($items2), 'table', ['items' => $items2])
+                    @endif
+                </div>
+            </div>
         </div>
-</div>
-</div>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

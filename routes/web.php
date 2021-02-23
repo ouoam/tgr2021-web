@@ -22,6 +22,7 @@ Route::get('/', [ItemController::class, 'indexHTML']);
 Route::get('/lime', [ItemController::class, 'listLime']);
 Route::get('/~lime', [ItemController::class, 'listNotLime']);
 Route::get('/compare', [ItemController::class, 'listCompare']);
+Route::get('/find', [ItemController::class, 'findHTML']);
 
 Route::group([
 

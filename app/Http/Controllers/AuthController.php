@@ -27,11 +27,11 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return view('login', ["msg" => "Error !!! E-mail or Password incorrect."]);
+            return view('login', ["msg" => "Error !!! E-mail or Password incorrect.", "class" => 'text-danger']);
         }
 
         //return $this->respondWithToken($token);
-        return view('login', ["msg" => "E-mail and Password is correct."]);
+        return view('login', ["msg" => "E-mail and Password is correct.", "class" => "text-success"]);
     }
 
     /**

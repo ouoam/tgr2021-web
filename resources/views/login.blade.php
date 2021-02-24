@@ -59,8 +59,7 @@ body {
 @csrf
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 @isset($msg)
-    <h1 class="h4 mb-3 font-weight-normal">{{$msg}}</h1>
-    <!-- todo: change to red color -->
+    <h1 class="h4 mb-3 font-weight-normal {{ $class ?? '' }}">{{$msg}}</h1>
 @endisset
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>

@@ -18,21 +18,29 @@
 @endif
     <div class="row">
 @isset ($online)
-        <iframe class="col" src="/chart" title="description" style="height:100vh;width:100vw;"></iframe>
+        <iframe class="col-8" src="/chart" title="description" style="height:100vh;width:100vw;"></iframe>
 @endisset
-        <div class="col container m-5">
+        <div class="col container">
 @isset ($online)
             <div class="row">
-                <h1> Last 20 items
+                <div class="col">
+                    <h1> Last 20 items
     @if ($online)
-                    <span class="badge badge-success">Online</span>
+                        <span class="badge badge-success">Online</span>
     @else
-                    <span class="badge badge-danger">Offline</span>
+                        <span class="badge badge-danger">Offline</span>
     @endif
-                </h1>
+                    </h1>
+                </div>
+                <div>
+                    <h4>
+                        <a href="/auth/login" class="badge badge-primary">Login</a>
+                        <a href="/users" class="badge badge-info">Manage</a>
+                    </h4>
+                </div>
             </div>
 @endisset
-            <div class="row" style="height:80vh;overflow:auto;">
+            <div class="row" style="height:90vh;overflow:auto;">
                 @include('table', ['items' => $items])
                 @if (isset($items2))
                 @includeWhen(isset($items2), 'table', ['items' => $items2])

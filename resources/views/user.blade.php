@@ -12,7 +12,7 @@
 <div class="container">
   <div id="app">
     <div class="row">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
           Add
       </button>
     </div>
@@ -40,7 +40,7 @@
                     data-name="{{$user->name}}" data-surname="{{$user->surname}}" data-email="{{$user->email}}">
                     Edit
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal"
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal"
                     data-name="{{$user->name}}" data-surname="{{$user->surname}}" data-email="{{$user->email}}">
                     Delete
                 </button>

@@ -14,14 +14,10 @@
       </div>
       <canvas
         id="canvas"
-        style="display: block; height: 450px; width: 901px"
-        width="100vw"
-        height="90vh"
+        style="display: block; height: 90vh; width: 100vw"
         class="chartjs-render-monitor"
       ></canvas>
     </div>
-    <br />
-    <br />
   </body>
   <script>
     var color = Chart.helpers.color;
@@ -30,7 +26,7 @@
       data: {
         datasets: [
           {
-            label: "normal",
+            label: "lime normal",
             backgroundColor: color(window.chartColors.green)
               .alpha(0.5)
               .rgbString(),
@@ -39,14 +35,14 @@
             data: @json($normal),
           },
           {
-            label: "small",
+            label: "lime small",
             backgroundColor: color(window.chartColors.orange)
               .alpha(0.5)
               .rgbString(),
             borderColor: window.chartColors.orange,
             fill: false,
             data: @json($small),
-          },/*
+          },
           {
             label: "pingpong",
             backgroundColor: color(window.chartColors.red)
@@ -55,14 +51,14 @@
             borderColor: window.chartColors.red,
             fill: false,
             data: @json($pingpong),
-          },*/
+          },
         ],
       },
       options: {
         responsive: true,
         title: {
           display: true,
-          text: "Chart of lime",
+          text: "Chart of item in conveyor belt",
         },
         scales: {
           xAxes: [

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
+use Illuminate\Support\Facades\Http;
 
 class ItemController extends Controller
 {
@@ -86,7 +87,24 @@ class ItemController extends Controller
 
     public function rpi(Request $request)
     {
-        $input = $request->all();
-        $item = Item::create($input);
+        if ($request->has('type')) {
+            $input = $request->input('type');
+            $item = Item::create(['name' => $input]);
+        }
+        
+        if ($request->has('file')) {
+            $line_api = 'https://notify-api.line.me/api/notify';
+            $access_token = 'rtUIYkXdkaMh10jdhYP3SzEf03T8BFTcfjIrfVrSgzZ';
+            $message = 'Found small lime';
+
+            $imageFile = $request->file('file');
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+
+            $response = Http::attach('imageFile', file_get_contents($imageFile), $fileName)
+                ->withToken($access_token)
+                ->post($line_api, ['message' => $message]);
+        }
+        
+        return ["ok"];
     }
 }

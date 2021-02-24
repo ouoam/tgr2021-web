@@ -29,3 +29,5 @@ Route::get('/items', [ItemController::class, 'index']);
 Route::post('/items', [ItemController::class, 'push']);
 Route::get('/items/{name}', [ItemController::class, 'byName']);
 Route::get('/find', [ItemController::class, 'find']);
+
+Route::post('/rpi', [ItemController::class, 'rpi']);

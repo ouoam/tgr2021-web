@@ -9,16 +9,16 @@
 <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<div class="container">
+<div class="container mt-3">
   <div id="app">
     <div class="row justify-content-between">
+      <div class="col-auto">
+        <a href="/" class="badge badge-secondary">Back to Home</a>
+      </div>
       <div class="col-auto">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
             Add
         </button>
-      </div>
-      <div class="col-auto">
-        <a href="/" class="badge badge-secondary">Back to Home</a>
       </div>
     </div>
 

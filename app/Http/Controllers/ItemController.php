@@ -7,6 +7,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ItemController extends Controller
 {
@@ -117,5 +119,30 @@ class ItemController extends Controller
         return view('chart', ["list" => $list]);
 
         //return response()->json($list);
+    }
+
+    public function hb()
+    {
+        $content = Carbon::now()->timestamp;
+
+        Storage::put('last.txt', $content);
+
+        return $content;
+    }
+
+    public function online()
+    {
+        if (Storage::exists('last.txt')) {
+            $last = intval(Storage::get('last.txt'));
+            $now = intval(Carbon::now()->timestamp);
+
+            return [
+                $last + 60 >= $now,
+                $last,
+                $now
+            ];
+        }
+
+        return -1;
     }
 }

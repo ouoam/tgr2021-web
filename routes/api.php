@@ -31,3 +31,4 @@ Route::get('/items/{name}', [ItemController::class, 'byName']);
 Route::get('/find', [ItemController::class, 'find']);
 
 Route::post('/rpi', [ItemController::class, 'rpi']);
+Route::get('/hb', [ItemController::class, 'hb']);

@@ -30,6 +30,8 @@ Route::post('/users', [UserController::class, 'post']);
 
 Route::get('/chart', [ItemController::class, 'chart']);
 
+Route::get('/online', [ItemController::class, 'online']);
+
 Route::group([
 
     'middleware' => 'api',

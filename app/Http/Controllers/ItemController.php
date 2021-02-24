@@ -23,20 +23,20 @@ class ItemController extends Controller
 
     public function listLime()
     {
-        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
+        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, count(*) as qty')->get();
         return view('index', ["items" => $items]);
     }
 
     public function listNotLime()
     {
-        $items = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
+        $items = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, count(*) as qty')->get();
         return view('index', ["items" => $items]);
     }
 
     public function listCompare()
     {
-        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
-        $items2 = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
+        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, count(*) as qty')->get();
+        $items2 = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, count(*) as qty')->get();
         return view('index', ["items" => $items, "items2" => $items2]);
     }
     
@@ -66,10 +66,6 @@ class ItemController extends Controller
             $item->where('name', $request->input('name'));
         }
 
-        if ($request->input('qty')) {
-            $item->where('qty', $request->input('qty'));
-        }
-
         if ($request->input('created_at.lt') && $request->input('created_at.gt')) {
             $item->whereBetween('created_at', [$request->input('created_at.gt'), $request->input('created_at.lt')]);
         } else if ($request->input('created_at.lt')) {
@@ -86,5 +82,11 @@ class ItemController extends Controller
         $items = $this->find($request);
         $kinds = Arr::pluck(Item::groupBy('name')->get('name'), 'name');
         return view('find', ["items" => $items, "kinds" => $kinds]);
+    }
+
+    public function rpi(Request $request)
+    {
+        $input = $request->all();
+        $item = Item::create($input);
     }
 }

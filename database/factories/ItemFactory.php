@@ -22,8 +22,7 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['apple', 'papaya', 'banana', 'orange', 'coconut', 'durian']),
-            'qty' => $this->faker->numberBetween(0, 20),
+            'name' => $this->faker->randomElement(['apple', 'papaya', 'banana', 'orange', 'lemon', 'lime']),
         ];
     }
 }

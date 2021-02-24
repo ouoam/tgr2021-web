@@ -10,10 +10,6 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="qty">Qty</label>
-            <input type="number" class="form-control" id="qty" name="qty" placeholder="qty" v-model="qty">
-        </div>
-        <div class="form-group">
             <label for="date_gt">date_gt</label>
             <datetime class="form-control" id="date_gt" type="datetime" v-model="date_gt" format="yyyy-MM-dd HH:mm:ss" value-zone="Asia/Bangkok"
   zone="Asia/Bangkok"></datetime>
@@ -36,10 +32,9 @@
 </template>
 <script>
     export default {
-        props: ['init_qty', 'init_name', 'init_date_gt', 'init_date_lt', 'kinds'],
+        props: ['init_name', 'init_date_gt', 'init_date_lt', 'kinds'],
         data: function () {
             return {
-                qty: this.init_qty,
                 name: this.init_name,
                 date_gt: this.init_date_gt,
                 date_lt: this.init_date_lt

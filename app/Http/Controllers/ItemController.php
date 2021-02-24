@@ -20,7 +20,7 @@ class ItemController extends Controller
 
     public function indexHTML()
     {
-        $items = Item::orderByDesc('created_at')->limit(20)->get();
+        $items = Item::orderByDesc('created_at')->limit(30)->get();
         $online = $this->online();
         return view('index', ["items" => $items, "online" => $online]);
     }

@@ -37,7 +37,7 @@
 @endforelse
 
     <tr class="bg-info">
-    <td><b>Sum</b></td>
+    <td><b>Count</b></td>
     <td><b>{{$count}}</b></td>
     <td></td>
     </tr>

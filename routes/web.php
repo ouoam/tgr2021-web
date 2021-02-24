@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -24,6 +25,9 @@ Route::get('/~lime', [ItemController::class, 'listNotLime']);
 Route::get('/compare', [ItemController::class, 'listCompare']);
 Route::get('/find', [ItemController::class, 'findHTML']);
 
+Route::get('/users', [UserController::class, 'indexHTML']);
+Route::post('/users', [UserController::class, 'post']);
+
 Route::group([
 
     'middleware' => 'api',
@@ -38,4 +42,5 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+    Route::get('me', [AuthController::class, 'me']);
 });

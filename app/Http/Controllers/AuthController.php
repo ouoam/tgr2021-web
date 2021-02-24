@@ -27,7 +27,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return view('login', ["msg" => "E-mail or Password incorrect."]);
         }
 
         return $this->respondWithToken($token);
@@ -74,10 +74,12 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return response()->json([
+        $response = response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+        $response->withCookie(cookie('access_token', $token, auth()->factory()->getTTL()));
+        return $response;
     }
 }

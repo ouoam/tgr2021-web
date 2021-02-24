@@ -10,8 +10,14 @@
 </head>
 <body>
 <div class="container">
-    <div id="app">
-        <div class="row">
+  <div id="app">
+    <div class="row">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
+          Add
+      </button>
+    </div>
+
+    <div class="row">
 
 <table class="table col-sm">
     <thead>
@@ -82,12 +88,10 @@
           <label for="inputEmail">E-mail</label>
           <input class="form-control" id="inputEmail"  disabled>
         </div>
-        <!--
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input class="form-control" id="inputPassword">
+          <input type="password" class="form-control" id="inputPassword" name="password">
         </div>
-        -->
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -123,6 +127,43 @@
   </div>
 </div>
 
+<div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="modal-body" method="post" id="AddForm">
+      @csrf
+        <input name="action" type="hidden" value="add">
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input class="form-control" id="inputName" name="name">
+        </div>
+        <div class="form-group">
+          <label for="inputSurname">Surname</label>
+          <input class="form-control" id="inputSurname" name="surname">
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">E-mail</label>
+          <input type="email" class="form-control" id="inputEmail" name="email">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" name="password">
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('AddForm').submit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="{{ mix('js/app.js') }}"></script>
 <script>
 $('#EditModal').on('show.bs.modal', function (event) {
@@ -141,6 +182,7 @@ $('#EditModal').on('show.bs.modal', function (event) {
   modal.find('#inputSurname')[0].placeholder = surname;
   modal.find('#inputEmail')[0].value = email;
   modal.find('#inputEmail')[0].placeholder = email;
+  modal.find('#inputEmail')[0].disabled = true;
   modal.find('#hiddenEmail')[0].value = email;
   modal.find('#hiddenEmail')[0].placeholder = email;
 })

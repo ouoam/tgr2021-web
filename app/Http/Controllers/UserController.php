@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -27,11 +28,21 @@ class UserController extends Controller
     {
         if ($request->filled('action')) {
             if ($request->input('action') == 'edit') {
-                $user = User::where('email', $request->input('email'))->update($request->only(['name', 'surname']));
+                $array = $request->only(['name', 'surname']);
+                if ($request->filled('password')) {
+                    $array = array_merge($array, ['password' => Hash::make($request->input('password'))]);
+                }
+                $user = User::where('email', $request->input('email'))->update($array);
                 
                 return $this->indexHTML();
             } else if ($request->input('action') == 'delete') {
                 $user = User::where('email', $request->input('email'))->delete();
+
+                return $this->indexHTML();
+            } else if ($request->input('action') == 'add') {
+                $array = $request->only(['name', 'surname', 'email', 'password']);
+                $array['password'] = Hash::make($array['password']);
+                $user = User::create($array);
 
                 return $this->indexHTML();
             }

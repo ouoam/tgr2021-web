@@ -28,6 +28,8 @@ Route::get('/find', [ItemController::class, 'findHTML']);
 Route::get('/users', [UserController::class, 'indexHTML']);
 Route::post('/users', [UserController::class, 'post']);
 
+Route::get('/chart', [ItemController::class, 'chart']);
+
 Route::group([
 
     'middleware' => 'api',

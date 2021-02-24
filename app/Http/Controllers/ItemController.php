@@ -91,7 +91,7 @@ class ItemController extends Controller
             $input = $request->input('type');
             $item = Item::create(['name' => $input]);
         }
-        
+
         if ($request->has('file')) {
             $line_api = 'https://notify-api.line.me/api/notify';
             $access_token = 'rtUIYkXdkaMh10jdhYP3SzEf03T8BFTcfjIrfVrSgzZ';
@@ -106,5 +106,16 @@ class ItemController extends Controller
         }
         
         return ["ok"];
+    }
+
+    public function chart(Request $request)
+    {
+        $items = Item::selectRaw('`created_at` as x')->selectRaw('count(*) as y')
+        ->groupByRaw('UNIX_TIMESTAMP(x) DIV 60')->orderBy('x')->whereRaw("`name` like 'lime%'");
+        
+        $list = $items->get();
+        return view('chart', ["list" => $list]);
+
+        //return response()->json($list);
     }
 }

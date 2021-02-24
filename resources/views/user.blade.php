@@ -13,13 +13,22 @@
   <div id="app">
     <div class="row justify-content-between">
       <div class="col-auto">
+<<<<<<< HEAD
         <a href="/" class="badge badge-secondary">Back to Home</a>
       </div>
       <div class="col-auto">
+=======
+>>>>>>> 94208004459292a6a50f5560ce9563b87d7a1626
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
             Add
         </button>
       </div>
+<<<<<<< HEAD
+=======
+      <div class="col-auto">
+        <a href="/" class="badge badge-secondary">Back to Home</a>
+      </div>
+>>>>>>> 94208004459292a6a50f5560ce9563b87d7a1626
     </div>
 
     <div class="row">

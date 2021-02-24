@@ -20,8 +20,9 @@ class ItemController extends Controller
 
     public function indexHTML()
     {
-        $items = Item::all();
-        return view('index', ["items" => $items]);
+        $items = Item::orderByDesc('created_at')->limit(20)->get();
+        $online = $this->online();
+        return view('index', ["items" => $items, "online" => $online]);
     }
 
     public function listLime()
@@ -137,11 +138,7 @@ class ItemController extends Controller
             $last = intval(Storage::get('last.txt'));
             $now = intval(Carbon::now()->timestamp);
 
-            return [
-                $last + 60 >= $now,
-                $last,
-                $now
-            ];
+            return $last + 60 >= $now;
         }
 
         return -1;

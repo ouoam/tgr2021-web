@@ -22,7 +22,11 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['apple', 'papaya', 'banana', 'orange', 'lemon', 'lime']),
+            'name' => $this->faker->randomElement(
+                ['lime_normal', 'lime_normal', 'lime_normal', 'lime_small', 'lime_small', 'pingpong']
+            ),
+            'size' => $this->faker->randomFloat(2, 36, 50),
+            'created_at' => $this->faker->dateTimeInInterval('0 hours', '+1 hours')
         ];
     }
 }

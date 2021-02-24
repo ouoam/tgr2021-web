@@ -24,21 +24,13 @@
     <br />
   </body>
   <script>
-    function newDate(days) {
-      return moment().add(days, "d").toDate();
-    }
-
-    function newDateString(days) {
-      return moment().add(days, "d").unix();
-    }
-
     var color = Chart.helpers.color;
     var config = {
       type: "line",
       data: {
         datasets: [
           {
-            label: "Dataset with string point data",
+            label: "lime",
             backgroundColor: color(window.chartColors.red)
               .alpha(0.5)
               .rgbString(),
@@ -52,7 +44,7 @@
         responsive: true,
         title: {
           display: true,
-          text: "Chart.js Time Point Data",
+          text: "Chart of lime",
         },
         scales: {
           xAxes: [

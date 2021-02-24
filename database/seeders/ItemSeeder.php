@@ -14,7 +14,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        $items = Item::factory()->count(10)->make();
+        $items = Item::factory()->count(50)->make();
         foreach ($items as $item) {
             $item->save();
         }

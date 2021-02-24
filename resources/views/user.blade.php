@@ -35,7 +35,7 @@
                     Edit
                 </button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal"
-                data-email="{{$user->email}}">
+                    data-name="{{$user->name}}" data-surname="{{$user->surname}}" data-email="{{$user->email}}">
                     Delete
                 </button>
             </div>
@@ -97,6 +97,32 @@
   </div>
 </div>
 
+<div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to delete : </p>
+        <p id="userName"></p>
+        <form method="post" id="DeleteForm">
+        @csrf
+          <input name="action" type="hidden" value="delete">
+          <input name="email" id="hiddenEmail" type="hidden" value="edit">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('DeleteForm').submit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="{{ mix('js/app.js') }}"></script>
 <script>
 $('#EditModal').on('show.bs.modal', function (event) {
@@ -115,6 +141,20 @@ $('#EditModal').on('show.bs.modal', function (event) {
   modal.find('#inputSurname')[0].placeholder = surname;
   modal.find('#inputEmail')[0].value = email;
   modal.find('#inputEmail')[0].placeholder = email;
+  modal.find('#hiddenEmail')[0].value = email;
+  modal.find('#hiddenEmail')[0].placeholder = email;
+})
+
+$('#DeleteModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var name = button.data('name') // Extract info from data-* attributes
+  var surname = button.data('surname')
+  var email = button.data('email')
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  window.ggg = modal;
+  modal.find('#userName').text(name + '  ' + surname);
   modal.find('#hiddenEmail')[0].value = email;
   modal.find('#hiddenEmail')[0].placeholder = email;
 })

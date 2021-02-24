@@ -31,7 +31,9 @@ class UserController extends Controller
                 
                 return $this->indexHTML();
             } else if ($request->input('action') == 'delete') {
+                $user = User::where('email', $request->input('email'))->delete();
 
+                return $this->indexHTML();
             }
         }
         return $request->all();

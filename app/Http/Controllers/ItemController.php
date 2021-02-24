@@ -23,13 +23,13 @@ class ItemController extends Controller
 
     public function listLime()
     {
-        $items = Item::where('name', 'lime')->get();
+        $items = Item::where('name', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
         return view('index', ["items" => $items]);
     }
 
     public function listNotLime()
     {
-        $items = Item::where('name', '!=', 'lime')->get();
+        $items = Item::where('name', '!=', 'lime')->groupBy('name')->selectRaw('name, sum(qty) as qty')->get();
         return view('index', ["items" => $items]);
     }
 

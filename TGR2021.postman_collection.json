@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "4eadf536-c083-4c99-bf7e-8d56db452b36",
+		"name": "TGR2021",
+		"description": "API Document for TGR18 API for TGR2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"banana\",\r\n    \"qty\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip}}/api/items",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Insert item data into database\n\nbody can be use\n\n```json\n{\n    \"name\": \"papaya\",\n    \"qty\": 7\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip}}/api/items",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Get all item in Database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All by kind",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip}}/api/items/:kind",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"items",
+								":kind"
+							],
+							"variable": [
+								{
+									"key": "kind",
+									"value": "Banana"
+								}
+							]
+						},
+						"description": "Get items list by name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get kind list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip}}/api/kind",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"kind"
+							]
+						},
+						"description": "Get list of item name"
+					},
+					"response": []
+				},
+				{
+					"name": "Find",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"qty\": \"\",\r\n    \"created_at\": {\r\n        \"gt\": \"2021-02-23 21:03:30\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip}}/api/find",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"find"
+							]
+						},
+						"description": "Find items in Database\n\nbody can be use\n```json\n{\n    \"name\": \"papaya\",\n    \"qty\": 7,\n    \"created_at\": {\n        \"gt\" : \"2021-02-23T14:03:25.000000Z\",\n        \"lt\" : \"2021-02-23T14:03:25.000000Z\"\n    }\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "All about item\n\nOutput for each item\n\n```json\n{\n    \"id\": 18,\n    \"name\": \"papaya\",\n    \"qty\": 7,\n    \"created_at\": \"2021-02-23T14:03:25.000000Z\",\n    \"updated_at\": \"2021-02-23T14:03:25.000000Z\"\n}\n```"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ip",
+			"value": "165.22.251.78",
+			"disabled": true
+		},
+		{
+			"key": "ip",
+			"value": "165.22.251.78"
+		}
+	]
+}

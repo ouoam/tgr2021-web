@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body data-gr-c-s-loaded="true">
-    <div style="width: 75%">
+    <div>
       <div class="chartjs-size-monitor">
         <div class="chartjs-size-monitor-expand"><div class=""></div></div>
         <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
@@ -15,8 +15,8 @@
       <canvas
         id="canvas"
         style="display: block; height: 450px; width: 901px"
-        width="1802"
-        height="900"
+        width="100vw"
+        height="90vh"
         class="chartjs-render-monitor"
       ></canvas>
     </div>

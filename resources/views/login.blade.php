@@ -68,6 +68,9 @@ body {
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
     
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <br/>
+    <br/>
+    <a href="/" class="badge badge-secondary">Back to Home</a>
 </form>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>

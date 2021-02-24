@@ -11,10 +11,15 @@
 <body>
 <div class="container">
   <div id="app">
-    <div class="row">
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
-          Add
-      </button>
+    <div class="row justify-content-between">
+      <div class="col-auto">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
+            Add
+        </button>
+      </div>
+      <div class="col-auto">
+        <a href="/" class="badge badge-secondary">Back to Home</a>
+      </div>
     </div>
 
     <div class="row">

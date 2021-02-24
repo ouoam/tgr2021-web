@@ -30,14 +30,32 @@
       data: {
         datasets: [
           {
-            label: "lime",
+            label: "normal",
+            backgroundColor: color(window.chartColors.green)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: window.chartColors.green,
+            fill: false,
+            data: @json($normal),
+          },
+          {
+            label: "small",
+            backgroundColor: color(window.chartColors.orange)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: window.chartColors.orange,
+            fill: false,
+            data: @json($small),
+          },/*
+          {
+            label: "pingpong",
             backgroundColor: color(window.chartColors.red)
               .alpha(0.5)
               .rgbString(),
             borderColor: window.chartColors.red,
             fill: false,
-            data: @json($list),
-          },
+            data: @json($pingpong),
+          },*/
         ],
       },
       options: {

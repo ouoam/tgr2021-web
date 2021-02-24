@@ -114,11 +114,19 @@ class ItemController extends Controller
 
     public function chart(Request $request)
     {
-        $items = Item::selectRaw('`created_at` as x')->selectRaw('count(*) as y')
-        ->groupByRaw('UNIX_TIMESTAMP(x) DIV 60')->orderBy('x')->whereRaw("`name` like 'lime%'");
+        $init = Item::selectRaw('`created_at` as x')->selectRaw('count(*) as y')
+        ->groupByRaw('UNIX_TIMESTAMP(x) DIV 60')->orderBy('x');
+        $pingpong = $init->where('name', 'pingpong')->get();
+
+        $init2 = Item::selectRaw('`created_at` as x')->selectRaw('count(*) as y')
+        ->groupByRaw('UNIX_TIMESTAMP(x) DIV 60')->orderBy('x');
+        $normal = $init2->where('name', 'lime_normal')->get();
+
+        $init3 = Item::selectRaw('`created_at` as x')->selectRaw('count(*) as y')
+        ->groupByRaw('UNIX_TIMESTAMP(x) DIV 60')->orderBy('x');
+        $small = $init3->where('name', 'lime_small')->get();
         
-        $list = $items->get();
-        return view('chart', ["list" => $list]);
+        return view('chart', ["pingpong" => $pingpong, 'normal' => $normal, 'small' => $small]);
 
         //return response()->json($list);
     }

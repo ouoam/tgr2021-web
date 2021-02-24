@@ -91,7 +91,8 @@ class ItemController extends Controller
     {
         if ($request->has('type')) {
             $input = $request->input('type');
-            $item = Item::create(['name' => $input]);
+            $input2 = $request->input('size');
+            $item = Item::create(['name' => $input, 'size' => $input2]);
         }
 
         if ($request->has('file')) {

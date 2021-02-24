@@ -18,9 +18,9 @@
 @endif
     <div class="row">
 @isset ($online)
-        <iframe class="col-9" src="/chart" title="description" style="height:100vh;width:100vw;"></iframe>
+        <iframe class="col" src="/chart" title="description" style="height:100vh;width:100vw;"></iframe>
 @endisset
-        <div class="col container" style="height:100vh;overflow:auto;">
+        <div class="col-auto container" style="height:100vh;overflow:auto;">
 @isset ($online)
             <div class="row">
                 <div class="col">
@@ -41,8 +41,8 @@
                 @endif
             </div>
 @isset ($online)
-            <div class="row">
-                <div>
+            <div class="row justify-content-end">
+                <div class="col-auto">
                     <h4>
                         <a href="/auth/login" class="badge badge-primary">Login</a>
                         <a href="/users" class="badge badge-info">Manage</a>

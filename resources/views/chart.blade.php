@@ -3,8 +3,8 @@
     <title>Time Scale Point Data</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script src="./js/utils.js"></script>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="{{ mix('/js/utils.js') }}"></script>
+    <link rel="stylesheet" href="{{ mix('/css/style.css') }}" />
   </head>
   <body data-gr-c-s-loaded="true">
     <div>
